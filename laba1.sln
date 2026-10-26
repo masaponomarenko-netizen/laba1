@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaEvaluator", "FormulaEvaluator.csproj", "{6E19BB15-A6D4-4581-9F3B-5052AEE2EB9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpreadsheetApp", "SpreadsheetApp\SpreadsheetApp.csproj", "{1215A509-E557-4D62-A659-0571E7DC58D7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E19BB15-A6D4-4581-9F3B-5052AEE2EB9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E19BB15-A6D4-4581-9F3B-5052AEE2EB9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E19BB15-A6D4-4581-9F3B-5052AEE2EB9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E19BB15-A6D4-4581-9F3B-5052AEE2EB9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1215A509-E557-4D62-A659-0571E7DC58D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1215A509-E557-4D62-A659-0571E7DC58D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1215A509-E557-4D62-A659-0571E7DC58D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1215A509-E557-4D62-A659-0571E7DC58D7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

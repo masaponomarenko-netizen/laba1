@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Antlr4.Runtime.Standard" Version="4.13.1" />
+      <PackageReference Include="Antlr4BuildTasks" Version="12.14.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Antlr4 Include="FormulaGrammar.g4" />
+    </ItemGroup>
+
+    <!-- Не включати файли MAUI-застосунку, що лежить у підпапці -->
+    <ItemGroup>
+        <Compile Remove="SpreadsheetApp/**" />
+        <None Remove="SpreadsheetApp/**" />
+        <EmbeddedResource Remove="SpreadsheetApp/**" />
+    </ItemGroup>
+
+</Project>

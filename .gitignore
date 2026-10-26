@@ -1,0 +1,22 @@
+# .NET / MAUI
+bin/
+obj/
+publish/
+*.app/
+*.ipa
+*.apk
+*.aab
+*.dSYM/
+
+# IDE
+.idea/
+.vs/
+*.user
+*.suo
+*.DotSettings.user
+
+# macOS
+.DS_Store
+
+# Матеріали лабораторної (не включаємо у репозиторій)
+*.docx
