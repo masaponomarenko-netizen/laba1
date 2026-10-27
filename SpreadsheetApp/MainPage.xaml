@@ -6,7 +6,6 @@
 
     <Grid RowDefinitions="Auto,Auto,Auto,*" Padding="10" RowSpacing="8">
 
-        <!-- Панель кнопок (як у методичці, стор. 236-262) -->
         <ScrollView Grid.Row="0" Orientation="Horizontal">
             <HorizontalStackLayout Spacing="6">
                 <Button Text="Зберегти" Clicked="SaveButton_Clicked" />
@@ -22,20 +21,17 @@
             </HorizontalStackLayout>
         </ScrollView>
 
-        <!-- Рядок вводу формули -->
         <Entry x:Name="textInput"
                Grid.Row="1"
                Placeholder="Введіть вираз, напр. =max(A1,B1)+2*3, і натисніть Enter"
                Completed="FormulaBar_Completed" />
 
-        <!-- Статус -->
         <Label x:Name="statusLabel"
                Grid.Row="2"
                FontSize="12"
                TextColor="Gray"
                Text="" />
 
-        <!-- Сама таблиця -->
         <ScrollView Grid.Row="3" Orientation="Both">
             <Grid x:Name="grid" />
         </ScrollView>

@@ -15,7 +15,6 @@
         <Antlr4 Include="FormulaGrammar.g4" />
     </ItemGroup>
 
-    <!-- Не включати файли MAUI-застосунку, що лежить у підпапці -->
     <ItemGroup>
         <Compile Remove="SpreadsheetApp/**" />
         <None Remove="SpreadsheetApp/**" />

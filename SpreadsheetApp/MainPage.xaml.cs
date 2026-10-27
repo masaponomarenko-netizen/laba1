@@ -10,12 +10,11 @@ public partial class MainPage : ContentPage
     private int _rows = 12;
     private int _cols = 8;
 
-    // Зберігає вирази незалежно від того, що зараз показано (ВИРАЗ чи ЗНАЧЕННЯ)
     private readonly Dictionary<string, string> _expressions = new();
 
     private Entry? _activeCell;
-    private bool _updating;      // захист від рекурсії під час програмної зміни Text
-    private bool _showingValues; // true = показуємо обчислені значення
+    private bool _updating;
+    private bool _showingValues;
 
     public MainPage()
     {
@@ -26,10 +25,6 @@ public partial class MainPage : ContentPage
     private static string SavePath =>
         Path.Combine(FileSystem.AppDataDirectory, "spreadsheet.tsv");
 
-    // ------------------------------------------------------------------
-    //  ПОБУДОВА ТАБЛИЦІ
-    // ------------------------------------------------------------------
-
     private void RebuildGrid()
     {
         _updating = true;
@@ -38,17 +33,14 @@ public partial class MainPage : ContentPage
         grid.RowDefinitions.Clear();
         grid.ColumnDefinitions.Clear();
 
-        // Колонка заголовків + колонки клітинок
         grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(44) });
         for (int c = 0; c < _cols; c++)
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(110) });
 
-        // Рядок заголовків + рядки клітинок
         grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(28) });
         for (int r = 0; r < _rows; r++)
             grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(32) });
 
-        // Заголовки стовпчиків: A, B, C...
         for (int c = 0; c < _cols; c++)
         {
             var header = new Label
@@ -62,7 +54,6 @@ public partial class MainPage : ContentPage
             grid.Add(header, c + 1, 0);
         }
 
-        // Заголовки рядків + клітинки
         for (int r = 0; r < _rows; r++)
         {
             var rowHeader = new Label
@@ -98,10 +89,6 @@ public partial class MainPage : ContentPage
     }
 
     private IEnumerable<Entry> Cells() => grid.Children.OfType<Entry>();
-
-    // ------------------------------------------------------------------
-    //  РЕДАГУВАННЯ КЛІТИНОК
-    // ------------------------------------------------------------------
 
     private void Cell_TextChanged(object? sender, TextChangedEventArgs e)
     {
@@ -141,10 +128,6 @@ public partial class MainPage : ContentPage
             if (entry.ClassId is string cellRef)
                 _expressions[cellRef] = entry.Text ?? string.Empty;
     }
-
-    // ------------------------------------------------------------------
-    //  ОБЧИСЛЕННЯ
-    // ------------------------------------------------------------------
 
     private async void CalculateButton_Clicked(object? sender, EventArgs e)
         => await CalculateAsync();
@@ -221,10 +204,6 @@ public partial class MainPage : ContentPage
         return value.ToString("0.##########", CultureInfo.InvariantCulture);
     }
 
-    // ------------------------------------------------------------------
-    //  РЕЖИМИ: ВИРАЗ / ЗНАЧЕННЯ
-    // ------------------------------------------------------------------
-
     private async void ModeButton_Clicked(object? sender, EventArgs e)
     {
         if (!_showingValues)
@@ -243,10 +222,6 @@ public partial class MainPage : ContentPage
         modeButton.Text = "Режим: ВИРАЗ";
         statusLabel.Text = "Показано вирази";
     }
-
-    // ------------------------------------------------------------------
-    //  ДОДАВАННЯ / ВИДАЛЕННЯ РЯДКІВ І СТОВПЧИКІВ
-    // ------------------------------------------------------------------
 
     private void AddRowButton_Clicked(object? sender, EventArgs e)
     {
@@ -328,10 +303,6 @@ public partial class MainPage : ContentPage
         statusLabel.Text = $"Видалено стовпчик {ColumnName(col)}. Стовпчиків: {_cols}";
     }
 
-    // ------------------------------------------------------------------
-    //  ЗБЕРЕЖЕННЯ / ЧИТАННЯ ФАЙЛУ
-    // ------------------------------------------------------------------
-
     private async void SaveButton_Clicked(object? sender, EventArgs e)
     {
         try
@@ -397,10 +368,6 @@ public partial class MainPage : ContentPage
         }
     }
 
-    // ------------------------------------------------------------------
-    //  ДОВІДКА ТА ВИХІД
-    // ------------------------------------------------------------------
-
     private async void HelpButton_Clicked(object? sender, EventArgs e)
     {
         await DisplayAlertAsync(
@@ -421,10 +388,6 @@ public partial class MainPage : ContentPage
     {
         Application.Current?.Quit();
     }
-
-    // ------------------------------------------------------------------
-    //  ДОПОМІЖНЕ: A1 <-> (row, col)
-    // ------------------------------------------------------------------
 
     private static string ColumnName(int index)
     {
