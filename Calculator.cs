@@ -41,29 +41,6 @@ public static class Calculator
 
         return visitor.Visit(tree);
     }
-    
-    public static bool TryEvaluate(string expression, Func<string, double> getCellValue, out double value, 
-        out string? error)
-    {
-        try
-        {
-            value = Evaluate(expression, getCellValue);
-            error = null;
-            return true;
-        }
-        catch (FormulaSyntaxException ex)
-        {
-            value = 0;
-            error = ex.Message;
-            return false;
-        }
-        catch (Exception ex)
-        {
-            value = 0;
-            error = ex.Message;
-            return false;
-        }
-    }
 
     internal static string Normalize(string expression)
     {
