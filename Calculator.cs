@@ -9,13 +9,13 @@ public class ThrowErrorListener : BaseErrorListener, IAntlrErrorListener<int>
     public override void SyntaxError(TextWriter output, IRecognizer recognizer, IToken offendingSymbol, int line, 
         int charPositionInLine, string msg, RecognitionException e)
     {
-        throw new FormulaSyntaxException(msg, line, charPositionInLine + 1, offendingSymbol?.Text);
+        throw new FormulaSyntaxException(msg, line, charPositionInLine + 1);
     }
     
     public void SyntaxError(TextWriter output, IRecognizer recognizer, int offendingSymbol, int line, 
         int charPositionInLine, string msg, RecognitionException e)
     {
-        throw new FormulaSyntaxException(msg, line, charPositionInLine + 1, null);
+        throw new FormulaSyntaxException(msg, line, charPositionInLine + 1);
     }
 }
 
